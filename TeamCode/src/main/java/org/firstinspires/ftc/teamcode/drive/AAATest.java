@@ -37,11 +37,9 @@ public class AAATest extends BaseOpMode {
 
         TrajectorySequence seq1 = drive.trajectorySequenceBuilder(startPose)
                 .addTemporalMarker(() -> {
-//                    lift.goToPosition(LiftPosition.HIGH);
                     gripper.fullIntake(LiftPosition.HIGH.getHeight());
                 })
                 .waitSeconds(.3)
-//                .waitSeconds(10)
                 .lineToLinearHeading(CM.pose2d(-90, -10, 90))
                 .lineToLinearHeading(CM.pose2d(-90, -30, 90))
                 .turn(toRad(-45))
@@ -52,7 +50,7 @@ public class AAATest extends BaseOpMode {
                     gripper.fullOuttake(LiftPosition.AUTONOMOUS_FIFTH);
                 })
                 .waitSeconds(.5)
-                .back(5)
+                .back(.5)
                 .lineToLinearHeading(CM.pose2d(-100, -35, 0))
                 .lineToLinearHeading(CM.pose2d(-163, -35, 0))
                 .addTemporalMarker(() -> {
