@@ -63,10 +63,7 @@ public class LiftSubModule extends BaseSubModule {
     public void goToPosition(LiftPosition liftPosition){
         goToPosition(liftPosition, .8);
     }
-
-    public void goToPosition(int height, double speed){
-        goToPosition(LiftPosition.CUSTOM, speed, height);
-    }
+    
 
     @Override
     public void onUpdate() {

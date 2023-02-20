@@ -3,23 +3,20 @@ package org.firstinspires.ftc.teamcode.drive;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.trajectory.Trajectory;
-import com.acmerobotics.roadrunner.trajectory.constraints.TrajectoryVelocityConstraint;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.BaseOpMode;
 import org.firstinspires.ftc.teamcode.submodules.custom.LiftPosition;
-import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
-import org.firstinspires.ftc.teamcode.util.CM;
 
 /*
  * This is an example of a more complex path to really test the tuning.
  */
 @Autonomous(group = " Bjorn drive")
-public class AAATest extends BaseOpMode {
+public class StapVoorStap extends BaseOpMode {
 
     private SampleMecanumDrive drive;
 
-    public AAATest() {
+    public StapVoorStap() {
         useLoop = false;
     }
 
@@ -45,59 +42,66 @@ public class AAATest extends BaseOpMode {
                 .build();
 
         Trajectory traj3 = drive.trajectoryBuilder(traj2.end())
-                .lineToLinearHeading(new Pose2d(-28, -5.5, Math.toRadians(45)))
+                .lineToLinearHeading(new Pose2d(-28.5, -5.5, Math.toRadians(45)))
                 .build();
 
         Trajectory traj4 = drive.trajectoryBuilder(traj3.end(),true)
+                .splineTo(new Vector2d(-66,-10.5),Math.toRadians(180))
+                .build();
+
+        Trajectory traj5 = drive.trajectoryBuilder(new Pose2d(-65,-12),Math.toRadians(0))
+                .splineTo(new Vector2d(-29.5,-3),Math.toRadians(45))
+                .build();
+
+        Trajectory traj6 = drive.trajectoryBuilder(traj3.end(),true)
                 .splineTo(new Vector2d(-65,-12),Math.toRadians(180))
-                .build();
-
-        Trajectory traj5 = drive.trajectoryBuilder(traj4.end())
-                .splineTo(new Vector2d(-28.5,-3.5),Math.toRadians(45))
-                .build();
-
-        Trajectory traj6 = drive.trajectoryBuilder(traj5.end(),true)
-                .splineTo(new Vector2d(-66,-11),Math.toRadians(180))
                 .build();
 
         Trajectory traj7 = drive.trajectoryBuilder(traj6.end())
                 .splineTo(new Vector2d(-29,-3.5),Math.toRadians(45))
                 .build();
 
-        Trajectory traj8 = drive.trajectoryBuilder(traj7.end(),true)
-                .splineTo(new Vector2d(-67,-10),Math.toRadians(180))
-                .build();
-
-        Trajectory traj9 = drive.trajectoryBuilder(traj8.end())
-                .splineTo(new Vector2d(-28,-3.5),Math.toRadians(45))
-                .build();
 
 
 
-        lift.goToPosition(LiftPosition.HIGH);
+
+//        lift.goToPosition(LiftPosition.HIGH);
         drive.followTrajectory(traj1);
         drive.followTrajectory(traj2);
         drive.followTrajectory(traj3);
         sleep(250);
-        gripper.fullOuttake(LiftPosition.AUTONOMOUS_FIFTH);
+//        gripper.fullOuttake(LiftPosition.AUTONOMOUS_FIFTH);
 
         drive.followTrajectory(traj4);
-        gripper.fullIntake(LiftPosition.HIGH.getHeight());
+//        gripper.close();
+//        sleep(100);
+//        lift.goToPosition(LiftPosition.AUTONOMOUS_TAKE);
+//        sleep(150);
+//        gripper.fullIntake(LiftPosition.HIGH.getHeight());
         drive.followTrajectory(traj5);
         sleep(250);
-        gripper.fullOuttake(LiftPosition.AUTONOMOUS_FOURTH);
+//        gripper.fullOuttake(LiftPosition.AUTONOMOUS_FOURTH);
 
-        drive.followTrajectory(traj6);
-        gripper.fullIntake(LiftPosition.HIGH.getHeight());
-        drive.followTrajectory(traj7);
+        drive.followTrajectory(traj4);
+//        gripper.close();
+//        sleep(100);
+//        lift.goToPosition(LiftPosition.AUTONOMOUS_TAKE);
+//        sleep(150);
+//        gripper.fullIntake(LiftPosition.HIGH.getHeight());
+        drive.followTrajectory(traj5);
         sleep(250);
-        gripper.fullOuttake(LiftPosition.AUTONOMOUS_THIRD);
+//        gripper.fullOuttake(LiftPosition.AUTONOMOUS_FOURTH);
 
-        drive.followTrajectory(traj8);
-        gripper.fullIntake(LiftPosition.HIGH.getHeight());
-        drive.followTrajectory(traj9);
+        drive.followTrajectory(traj4);
+//        gripper.close();
+//        sleep(100);
+//        lift.goToPosition(LiftPosition.AUTONOMOUS_TAKE);
+//        sleep(150);
+//        gripper.fullIntake(LiftPosition.HIGH.getHeight());
+        drive.followTrajectory(traj5);
         sleep(250);
-        gripper.fullOuttake(LiftPosition.AUTONOMOUS_SECOND);
+//        gripper.fullOuttake(LiftPosition.AUTONOMOUS_FOURTH);
+
 
 
 

@@ -65,10 +65,11 @@ public enum LiftPosition {
      */
     MAX(2310),
 
+    AUTONOMOUS_TAKE(30000);
+
     /**
      * A zero position for the lift
      */
-    CUSTOM(0);
 
 
 
