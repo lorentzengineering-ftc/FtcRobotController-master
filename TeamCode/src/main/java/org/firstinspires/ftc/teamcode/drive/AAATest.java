@@ -52,25 +52,14 @@ public class AAATest extends BaseOpMode {
                 .splineTo(new Vector2d(-65,-12),Math.toRadians(180))
                 .build();
 
-        Trajectory traj5 = drive.trajectoryBuilder(traj4.end())
-                .splineTo(new Vector2d(-28.5,-3.5),Math.toRadians(45))
+        Trajectory traj5 = drive.trajectoryBuilder(new Pose2d(-65, -12, Math.toRadians(0)))
+                .splineTo(new Vector2d(-29,-3.5),Math.toRadians(45))
                 .build();
 
         Trajectory traj6 = drive.trajectoryBuilder(traj5.end(),true)
                 .splineTo(new Vector2d(-66,-11),Math.toRadians(180))
                 .build();
 
-        Trajectory traj7 = drive.trajectoryBuilder(traj6.end())
-                .splineTo(new Vector2d(-29,-3.5),Math.toRadians(45))
-                .build();
-
-        Trajectory traj8 = drive.trajectoryBuilder(traj7.end(),true)
-                .splineTo(new Vector2d(-67,-10),Math.toRadians(180))
-                .build();
-
-        Trajectory traj9 = drive.trajectoryBuilder(traj8.end())
-                .splineTo(new Vector2d(-28,-3.5),Math.toRadians(45))
-                .build();
 
 
 
@@ -80,24 +69,28 @@ public class AAATest extends BaseOpMode {
         drive.followTrajectory(traj3);
         sleep(250);
         gripper.fullOuttake(LiftPosition.AUTONOMOUS_FIFTH);
-
         drive.followTrajectory(traj4);
+
+        drive.setPoseEstimate(new Pose2d(-65, -12, Math.toRadians(0)));
         gripper.fullIntake(LiftPosition.HIGH.getHeight());
         drive.followTrajectory(traj5);
         sleep(250);
         gripper.fullOuttake(LiftPosition.AUTONOMOUS_FOURTH);
-
         drive.followTrajectory(traj6);
+
+        drive.setPoseEstimate(new Pose2d(-65, -12, Math.toRadians(0)));
         gripper.fullIntake(LiftPosition.HIGH.getHeight());
-        drive.followTrajectory(traj7);
+        drive.followTrajectory(traj5);
         sleep(250);
         gripper.fullOuttake(LiftPosition.AUTONOMOUS_THIRD);
+        drive.followTrajectory(traj6);
 
-        drive.followTrajectory(traj8);
+        drive.setPoseEstimate(new Pose2d(-65, -12, Math.toRadians(0)));
         gripper.fullIntake(LiftPosition.HIGH.getHeight());
-        drive.followTrajectory(traj9);
+        drive.followTrajectory(traj5);
         sleep(250);
         gripper.fullOuttake(LiftPosition.AUTONOMOUS_SECOND);
+        drive.followTrajectory(traj6);
 
 
 

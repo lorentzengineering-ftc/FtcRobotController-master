@@ -6,6 +6,7 @@ import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.teamcode.BaseOpMode;
+import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
 /*
  * This is an example of a more complex path to really test the tuning.
@@ -29,23 +30,45 @@ public class AAACycleTest extends BaseOpMode {
 
     @Override
     public void onStart() {
+        double x = .35;
+        double y = 0;
         Pose2d startPose = new Pose2d(-65, -12, Math.toRadians(0));
         drive.setPoseEstimate(startPose);
 
-        Trajectory traj1 = drive.trajectoryBuilder(startPose)
+        Trajectory traj1 = drive.trajectoryBuilder(new Pose2d(-65,-12, Math.toRadians(0)))
                 .splineTo(new Vector2d(-29.5,-3), Math.toRadians(45))
                 .build();
 
         Trajectory traj2 = drive.trajectoryBuilder(traj1.end(),true)
-                .splineTo(new Vector2d(-66,-10), Math.toRadians(180))
+                .splineTo(new Vector2d(-66,-11), Math.toRadians(180))
                 .build();
+
+
+
+
+
+
+
 
         drive.followTrajectory(traj1);
         drive.followTrajectory(traj2);
+
+        drive.setPoseEstimate(startPose);
+
         drive.followTrajectory(traj1);
         drive.followTrajectory(traj2);
+
+        drive.setPoseEstimate(startPose);
+
         drive.followTrajectory(traj1);
         drive.followTrajectory(traj2);
+
+
+
+
+
+
+
 
 
 

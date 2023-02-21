@@ -43,7 +43,7 @@ public enum LiftPosition {
     /**
      * The position of the lift when it needs to pick up a cone from the third level
      */
-    AUTONOMOUS_THIRD(3500),
+    AUTONOMOUS_THIRD(9000),
 
     /**
      * The position of the lift when it needs to pick up a cone from the fourth level
